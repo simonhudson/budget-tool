@@ -33,7 +33,7 @@ function DashboardView() {
 		var self = this;
 			self.error = ko.observable(null);
 			self.isLoading = ko.observable(true);
-			self.visibleCategory = ko.observable('pending');
+			self.visibleState = ko.observable('pending');
 			self.currentavailable = ko.observable();
 			self.states = ko.observableArray([]);
 			
@@ -62,6 +62,12 @@ function DashboardView() {
 
 		self.slug = function(str) {
 			return createSlug(str);
+		}
+
+		self.switchVisible = function(state) {
+			return (function() {
+				self.visibleState(state);
+			});
 		}
 
 		function createStates(data) {

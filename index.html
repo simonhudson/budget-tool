@@ -28,21 +28,22 @@
           <ul class="c-tabs__list js-tabs" role="tablist">
             <!-- ko foreach: states() -->
               <li class="c-tabs__item" role="presentation">
-              <a data-bind="attr: { 'aria-controls': 'tab-' + $root.slug(name), 'data-hook': 'c-tabs__link--' + $root.slug(name), 'data-tab': 'tab-' + $root.slug(name)}" class="c-tabs__link active js-tab-link" href="#" role="tab">
+              <a data-bind="attr: { 'aria-controls': 'tab-' + $root.slug(name), 'data-hook': 'c-tabs__link--' + $root.slug(name), 'data-tab': 'tab-' + $root.slug(name)}, click: $root.switchVisible(name)" class="c-tabs__link active js-tab-link" href="#" role="tab">
                 <span class="c-tabs__title" data-bind="text: name"></span>
               </a>
             </li>
             <!-- /ko -->
           </ul>
           <!-- ko foreach: states() -->
-          <div class="js-tab-content c-tabs__content" data-bind="attr: { 'class': name === 'pending' ? 'current' : '', 'data-hook': 'c-tabs__content--' + $root.slug(name), 'id': 'tab-' + $root.slug(name)}" role="tabpanel">
-            <h2 class="c-tabs__title--nojs">
-              <span class="c-tabs__title" data-bind="text: name"></span>
-            </h2>
-            <p data-bind="text: name + ' content here'"></p>
+          <div data-bind="visible: $parent.visibleState() === name">
+            <div class="js-tab-content c-tabs__content" data-bind="attr: { 'data-hook': 'c-tabs__content--' + $root.slug(name), 'id': 'tab-' + $root.slug(name) }, css: { current: name === 'pending' }" role="tabpanel">
+              <h2 class="c-tabs__title--nojs">
+                <span class="c-tabs__title" data-bind="text: name"></span>
+              </h2>
+              <p data-bind="text: name + ' content here'"></p>
+            </div>
           </div>
           <!-- /ko -->
-
       </div>
 
     </div>
