@@ -35,26 +35,33 @@
             <!-- /ko -->
           </ul>
           <!-- ko foreach: states() -->
-          <div data-bind="visible: $root.visibleState() === $data">
-            <div class="c-tabs__content" data-bind="attr: { 'data-hook': 'c-tabs__content--' + createSlug($data), 'id': 'tab-' + createSlug($data) }" role="tabpanel">
-              <h2 class="c-tabs__title--nojs">
-                <span class="c-tabs__title" data-bind="text: $data"></span>
-              </h2>
-              <ul class="budget-items__list">
+            <div data-bind="visible: $root.visibleState() === $data">
+              <table class="budget-items table table-striped" data-test-hook="budget-items__table--pending">
+                <thead>
+                  <tr>
+                    <th id="budget-item__title">Title</th>
+                    <th id="budget-item__amount">Amount</th>
+                    <th id="budget-item__due-date">Due</th>
+                    <th id="budget-item__action"></th>
+                  </tr>
+                </thead>
+                <tbody>
                 <!-- ko foreach: $root.items() -->
                   <!-- ko if: $data.state === $root.visibleState() -->
-                    <li class="budget-items__item" data-bind="if: $data.state === $root.visibleState()">
-                      <span data-bind="text: title"></span>
-                      <span data-bind="text: amount"></span>
-                      <span data-bind="text: state"></span>
-                      <button class="btn" data-bind="click: $root.setState('paid')">Mark as paid</button>
-                    </li>
+                    <tr>
+                      <td data-bind="text: $data.title" headers="budget-item__title"></td>
+                      <td data-bind="text: $data.amount" headers="budget-item__description"></td>
+                      <td data-bind="text: $data.datedue" headers="budget-item__apr"></td>
+                      <td headers="budget-item__action">
+                        <button class="btn btn-primary" data-bind="click: $root.setState('paid')">Mark as paid</button>
+                      </td>
+                    </tr>
                   <!-- /ko -->
                 <!-- /ko -->
-              </ul>
-            </div>
+              </tbody>
+            </table>
           </div>
-          <!-- /ko -->
+        <!-- /ko -->
       </div>
 
     </div>
