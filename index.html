@@ -43,7 +43,7 @@
               <ul class="budget-items__list">
                 <!-- ko foreach: $root.items() -->
                   <!-- ko if: $data.state === $root.visibleState() -->
-                    <li class="budget-items__item">
+                    <li class="budget-items__item" data-bind="if: $data.state === $root.visibleState()">
                       <span data-bind="text: title"></span>
                       <span data-bind="text: amount"></span>
                       <span data-bind="text: state"></span>
