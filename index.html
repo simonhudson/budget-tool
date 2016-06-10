@@ -51,9 +51,9 @@
                     <tr>
                       <td data-bind="text: $data.title" headers="budget-item__title"></td>
                       <td data-bind="text: $data.amount" headers="budget-item__description"></td>
-                      <td data-bind="text: $data.datedue" headers="budget-item__apr"></td>
+                      <td data-bind="text: $data.datedue" headers="budget-item__action"></td>
                       <td headers="budget-item__action">
-                        <button class="btn btn-primary" data-bind="click: $root.setState('paid')">Mark as paid</button>
+                        <button class="btn btn-primary" data-bind="click: $root.updateAvailable('minus', $data.amount)">Mark as paid</button>
                       </td>
                     </tr>
                   <!-- /ko -->

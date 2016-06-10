@@ -1,11 +1,11 @@
 {
-  "totalavailable": 1950.00,
-  "currentavailable": 650.04,
+  "totalavailable": 1950.10,
+  "currentavailable": 1950.10,
   "items": [
     {
       "id": 0,
       "title": "Joint account",
-      "amount": 900,
+      "amount": 900.05,
       "datedue": "20 June",
       "state": "pending"
     },

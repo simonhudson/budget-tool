@@ -72,6 +72,21 @@ function DashboardView() {
 			});
 		}
 
+		self.updateAvailable = function(operator, value) {
+			return (function() {
+				console.log(self.currentavailable());
+				console.log(value);
+				if (operator === 'minus') {
+					self.currentavailable(self.currentavailable() - value);
+					self.currentavailable(self.currentavailable().toFixed(2));
+				}
+				if (operator === 'plus') {
+
+				}
+				console.log(self.currentavailable());
+			});
+		}
+
 		function createStates(data) {
 			for (var i=0; i < data.items.length; i++) {
 				var item = data.items[i];
