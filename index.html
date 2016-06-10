@@ -2,13 +2,48 @@
 <head>
 <title>Budget Tool</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="text-center">&pound;165.00</h1>
+    </div>
+  </div>
+
   <div class="container">
-    <h1 class="page-header">Budget Tool</h1>
+
+    <div class="c-tabs__wrap">
+      <ul class="c-tabs__list js-tabs" role="tablist">
+        <li class="c-tabs__item" role="presentation">
+          <a aria-controls="tab-0" aria-selected="true" class="c-tabs__link active js-tab-link" data-hook="c-tabs__link--0" data-tab="tab-0" href="#" role="tab">
+            <span class="c-tabs__title">Pending</span>
+          </a>
+        </li>
+        <li class="c-tabs__item" role="presentation">
+          <a aria-controls="tab-1" aria-selected="false" class="c-tabs__link js-tab-link" data-hook="c-tabs__link--1" data-tab="tab-1" href="#" role="tab">
+            <span class="c-tabs__title">Paid</span>
+          </a>
+        </li>
+      </ul>
+      <div aria-hidden="false" class="js-tab-content c-tabs__content current" data-hook="c-tabs__content--0" id="tab-0" role="tabpanel">
+        <h2 class="c-tabs__title--nojs">
+          <span class="c-tabs__title">Pending</span>
+        </h2>
+        <p>Pending content</p>
+      </div>
+      <div aria-hidden="true" class="js-tab-content c-tabs__content" data-hook="c-tabs__content--1" id="tab-1" role="tabpanel">
+        <h2 class="c-tabs__title--nojs">
+          <span class="c-tabs__title">Paid</span>
+        </h2>
+        <p>Paid content</p>
+      </div>
+    </div>
 
   </div>
 
 <script src="libs/knockout/knockout-3.4.0.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
