@@ -8,6 +8,40 @@ var hasJs = function() {
 window.onload = hasJs();
 
 /*---------------------------------------------------------------------------------------------------------------------------------------
+Create slug
+*/
+function createSlug(str) {
+  var slug = str.toLowerCase();
+      slug = slug.replace(/\:/g, '');
+      slug = slug.replace(/\-/g, '');
+      slug = slug.replace(/\s+/g, '');
+  return slug;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
+AJAX
+*/
+function s_Ajax(method, url, callback) {
+  var request = new XMLHttpRequest();
+  request.open(method.toUpperCase(), url, true);
+
+  request.onload = function() {
+    if (this.status >= 200 && this.status < 400) {
+      var resp = this.response;
+      callback(resp);
+    } else {
+      console.log('Error');
+    }
+  };
+
+  request.onerror = function() {
+    console.log('Connection error');
+  };
+
+  request.send();
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
 Tabs
 */
 function tabs() {

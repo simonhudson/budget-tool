@@ -1,0 +1,48 @@
+{
+  "totalavailable": 1950.00,
+  "currentavailable": 650.04,
+  "items": [
+    {
+      "id": 0,
+      "title": "Joint account",
+      "amount": 900,
+      "datedue": "20 June",
+      "state": "pending"
+    },
+    {
+      "id": 1,
+      "title": "Petrol",
+      "amount": 40,
+      "datedue": "",
+      "state": "pending"
+    },
+    {
+      "id": 2,
+      "title": "Petrol",
+      "amount": 40,
+      "datedue": "",
+      "state": "pending"
+    },
+    {
+      "id": 3,
+      "title": "Petrol",
+      "amount": 40,
+      "datedue": "",
+      "state": "pending"
+    },
+    {
+      "id": 4,
+      "title": "Petrol",
+      "amount": 40,
+      "datedue": "",
+      "state": "pending"
+    },
+    {
+      "id": 5,
+      "title": "Car",
+      "amount": 165,
+      "datedue": "18 June",
+      "state": "paid"
+    }
+  ]
+}

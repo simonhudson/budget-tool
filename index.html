@@ -6,44 +6,51 @@
 </head>
 <body>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="text-center">&pound;165.00</h1>
+  <div class="ko-dashboard">
+
+    <div data-bind="if: isLoading() === true">
+      <div class="container">
+        <p class="text-center">Loading data...</p>
+      </div>
     </div>
-  </div>
 
-  <div class="container">
+    <div data-bind="if: isLoading() === false">
 
-    <div class="c-tabs__wrap">
-      <ul class="c-tabs__list js-tabs" role="tablist">
-        <li class="c-tabs__item" role="presentation">
-          <a aria-controls="tab-0" aria-selected="true" class="c-tabs__link active js-tab-link" data-hook="c-tabs__link--0" data-tab="tab-0" href="#" role="tab">
-            <span class="c-tabs__title">Pending</span>
-          </a>
-        </li>
-        <li class="c-tabs__item" role="presentation">
-          <a aria-controls="tab-1" aria-selected="false" class="c-tabs__link js-tab-link" data-hook="c-tabs__link--1" data-tab="tab-1" href="#" role="tab">
-            <span class="c-tabs__title">Paid</span>
-          </a>
-        </li>
-      </ul>
-      <div aria-hidden="false" class="js-tab-content c-tabs__content current" data-hook="c-tabs__content--0" id="tab-0" role="tabpanel">
-        <h2 class="c-tabs__title--nojs">
-          <span class="c-tabs__title">Pending</span>
-        </h2>
-        <p>Pending content</p>
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="text-center" data-bind="text: '&pound;' + $root.currentavailable()"></h1>
+        </div>
       </div>
-      <div aria-hidden="true" class="js-tab-content c-tabs__content" data-hook="c-tabs__content--1" id="tab-1" role="tabpanel">
-        <h2 class="c-tabs__title--nojs">
-          <span class="c-tabs__title">Paid</span>
-        </h2>
-        <p>Paid content</p>
+
+      <div class="container">
+
+        <div class="c-tabs__wrap">
+          <ul class="c-tabs__list js-tabs" role="tablist">
+            <!-- ko foreach: states() -->
+              <li class="c-tabs__item" role="presentation">
+              <a data-bind="attr: { 'aria-controls': 'tab-' + $root.slug(name), 'data-hook': 'c-tabs__link--' + $root.slug(name), 'data-tab': 'tab-' + $root.slug(name)}" class="c-tabs__link active js-tab-link" href="#" role="tab">
+                <span class="c-tabs__title" data-bind="text: name"></span>
+              </a>
+            </li>
+            <!-- /ko -->
+          </ul>
+          <!-- ko foreach: states() -->
+          <div class="js-tab-content c-tabs__content" data-bind="attr: { 'class': name === 'pending' ? 'current' : '', 'data-hook': 'c-tabs__content--' + $root.slug(name), 'id': 'tab-' + $root.slug(name)}" role="tabpanel">
+            <h2 class="c-tabs__title--nojs">
+              <span class="c-tabs__title" data-bind="text: name"></span>
+            </h2>
+            <p data-bind="text: name + ' content here'"></p>
+          </div>
+          <!-- /ko -->
+
       </div>
+
     </div>
 
   </div>
 
 <script src="libs/knockout/knockout-3.4.0.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/viewModels/dashboard.js"></script>
 </body>
 </html>
