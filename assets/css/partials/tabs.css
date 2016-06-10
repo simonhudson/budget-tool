@@ -68,10 +68,10 @@
   display:block;
 }
 
-.c-tabs__content {
+/*.c-tabs__content {
   display: none;
 }
 
 .c-tabs__content.current{
   display: inherit;
-}
+}*/

@@ -8,6 +8,13 @@ var hasJs = function() {
 window.onload = hasJs();
 
 /*---------------------------------------------------------------------------------------------------------------------------------------
+Uppercase first character
+*/
+function upperCaseFirstChar(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------
 Create slug
 */
 function createSlug(str) {

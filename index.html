@@ -28,19 +28,30 @@
           <ul class="c-tabs__list js-tabs" role="tablist">
             <!-- ko foreach: states() -->
               <li class="c-tabs__item" role="presentation">
-              <a data-bind="attr: { 'aria-controls': 'tab-' + $root.slug(name), 'data-hook': 'c-tabs__link--' + $root.slug(name), 'data-tab': 'tab-' + $root.slug(name)}, click: $root.switchVisible(name)" class="c-tabs__link active js-tab-link" href="#" role="tab">
-                <span class="c-tabs__title" data-bind="text: name"></span>
+              <a data-bind="attr: { 'aria-controls': 'tab-' + createSlug($data), 'data-hook': 'c-tabs__link--' + createSlug($data), 'data-tab': 'tab-' + createSlug($data)}, click: $root.switchVisible($data)" href="#" role="tab">
+                <span class="c-tabs__title" data-bind="text: upperCaseFirstChar($data)"></span>
               </a>
             </li>
             <!-- /ko -->
           </ul>
           <!-- ko foreach: states() -->
-          <div data-bind="visible: $parent.visibleState() === name">
-            <div class="js-tab-content c-tabs__content" data-bind="attr: { 'data-hook': 'c-tabs__content--' + $root.slug(name), 'id': 'tab-' + $root.slug(name) }, css: { current: name === 'pending' }" role="tabpanel">
+          <div data-bind="visible: $root.visibleState() === $data">
+            <div class="c-tabs__content" data-bind="attr: { 'data-hook': 'c-tabs__content--' + createSlug($data), 'id': 'tab-' + createSlug($data) }" role="tabpanel">
               <h2 class="c-tabs__title--nojs">
-                <span class="c-tabs__title" data-bind="text: name"></span>
+                <span class="c-tabs__title" data-bind="text: $data"></span>
               </h2>
-              <p data-bind="text: name + ' content here'"></p>
+              <ul class="budget-items__list">
+                <!-- ko foreach: $root.items() -->
+                  <!-- ko if: $data.state === $root.visibleState() -->
+                    <li class="budget-items__item">
+                      <span data-bind="text: title"></span>
+                      <span data-bind="text: amount"></span>
+                      <span data-bind="text: state"></span>
+                      <button class="btn" data-bind="click: $root.setState('paid')">Mark as paid</button>
+                    </li>
+                  <!-- /ko -->
+                <!-- /ko -->
+              </ul>
             </div>
           </div>
           <!-- /ko -->

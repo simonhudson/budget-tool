@@ -60,13 +60,15 @@ function DashboardView() {
 			self.isLoading(false);
 		}
 
-		self.slug = function(str) {
-			return createSlug(str);
-		}
-
 		self.switchVisible = function(state) {
 			return (function() {
 				self.visibleState(state);
+			});
+		}
+
+		self.setState = function(newState) {
+			return (function() {
+				console.log(newState);
 			});
 		}
 
@@ -74,7 +76,7 @@ function DashboardView() {
 			for (var i=0; i < data.items.length; i++) {
 				var item = data.items[i];
 				if (self.states.indexOf(item.state) < 0) {
-					self.states.push({name: item.state});
+					self.states.push(item.state);
 				}
 			}
 		}
